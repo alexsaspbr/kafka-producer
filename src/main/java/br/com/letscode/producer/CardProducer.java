@@ -1,13 +1,13 @@
 package br.com.letscode.producer;
 
 import br.com.letscode.domain.CardDTO;
-import com.google.gson.Gson;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-//@Slf4j
+@Slf4j
 @Service
 public class CardProducer {
 
@@ -15,12 +15,10 @@ public class CardProducer {
     private String topic;
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessage(CardDTO card){
-        Gson gson = new Gson();
-        String message = gson.toJson(card);
-        kafkaTemplate.send(topic, message);
+        kafkaTemplate.send(topic, card);
     }
 
 }
