@@ -12,8 +12,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Transaction {
 
+    private String description;
     private String pan;
-    private String name;
+    private Client client;
     private Brand brand;
     private BigDecimal amount;
     private LocalDateTime timestamp;
