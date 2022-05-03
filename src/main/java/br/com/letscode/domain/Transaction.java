@@ -1,18 +1,21 @@
 package br.com.letscode.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Builder
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @AllArgsConstructor
-public class CardDTO {
+public class Transaction {
 
     private String pan;
     private String name;
     private Brand brand;
+    private BigDecimal amount;
+    private LocalDateTime timestamp;
 
 }
